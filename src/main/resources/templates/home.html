@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Baraka - Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="page-container">
+    <div class="navbar">
+        <div class="nav-brand">Baraka</div>
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/search">Search</a>
+            <a href="/favorites">Favorites</a>
+            <a href="/reciters">Reciters</a>
+        </nav>
+    </div>
+    <div class="page-frame">
+
+        <header>
+            <h1 class="bismillah">بِسْمِ ٱللّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</h1>
+            <p class="subtitle">In the name of Allah, the Most Gracious, the Most Merciful</p>
+        </header>
+
+        <main>
+            <section class="featured-surah">
+                <h2>Featured Surah: Al-Fatiha</h2>
+                <p class="ayah">
+                    <em>"All praise is due to Allah, Lord of the worlds..."</em>
+                </p>
+                <audio controls>
+                    <source src="/audio/alfatiha.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </section>
+
+            <section class="actions">
+                <a href="/search" class="cta">🔍 Search for a Surah or Ayah</a>
+                <a href="/favorites" class="cta">⭐ View Your Favorites</a>
+            </section>
+        </main>
+
+        <footer>
+            <p>Baraka © 2025 - A Quran-centered listening experience</p>
+        </footer>
+
+    </div>
+</div>
+
+
+<script src="/js/script.js"></script>
+</body>
+</html>

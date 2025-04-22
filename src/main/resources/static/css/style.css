@@ -1,0 +1,119 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: url('/img/frame.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2c3e50;
+}
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    min-height:100vh;
+}
+.page-frame {
+    background-color: rgba(255, 255, 255, 0.85); /* slight background to keep content readable */
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* Keep the rest of your styles */
+.bismillah {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
+}
+
+main {
+    margin-top: 20px;
+}
+
+.featured-surah h2 {
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+.ayah {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+audio {
+    margin-top: 10px;
+}
+
+.actions {
+    margin-top: 40px;
+}
+
+.cta {
+    display: inline-block;
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.cta:hover {
+    background-color: #27ae60;
+}
+
+footer {
+    margin-top: 30px;
+    font-size: 0.8rem;
+    color:#888;
+}
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-brand {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color:#2ecc71;
+}
