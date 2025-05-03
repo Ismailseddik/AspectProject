@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Baraka - Login</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="page-container">
+
+  <div class="navbar">
+    <div class="nav-brand">Baraka</div>
+    <nav class="nav-links">
+      <a href="/">Login</a>
+      <a href="/signup">Sign Up</a>
+    </nav>
+  </div>
+
+  <div class="page-frame">
+    <header>
+      <h1>Welcome to Baraka</h1>
+      <p>Please log in to continue your Quran journey</p>
+    </header>
+
+    <main>
+      <form id="loginForm" class="form-style">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <div class="actions">
+          <button type="submit" class="cta">Login</button>
+          <a href="/signup" class="cta">Sign Up</a>
+        </div>
+      </form>
+    </main>
+
+    <footer>
+      <p>Baraka © 2025 - A Quran-centered experience</p>
+    </footer>
+
+  </div>
+</div>
+
+<script src="/js/login.js"></script>
+</body>
+</html>

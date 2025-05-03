@@ -1,0 +1,253 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: url('/img/frame.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2c3e50;
+}
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    min-height:100vh;
+}
+.page-frame {
+    background-color: rgba(255, 255, 255, 0.85); /* slight background to keep content readable */
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* Keep the rest of your styles */
+.bismillah {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
+}
+
+main {
+    margin-top: 20px;
+}
+
+.featured-surah h2 {
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+.ayah {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+audio {
+    margin-top: 10px;
+}
+
+.actions {
+    margin-top: 40px;
+}
+
+.cta {
+    display: inline-block;
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.cta:hover {
+    background-color: #27ae60;
+}
+
+footer {
+    margin-top: 30px;
+    font-size: 0.8rem;
+    color:#888;
+}
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-brand {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color:#2ecc71;
+}
+
+.search-box {
+    margin: 30px auto;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #fdfdfd;
+}
+
+.search-box button {
+    background-color: #2ecc71;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.search-box button:hover {
+    background-color:#27ae60;
+}
+
+.results {
+    margin-top: 30px;
+}
+
+.result-item {
+    background-color: #f9f9f9;
+    margin: 10px auto;
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 600px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.result-item h3 {
+    margin: 0 0 5px;
+}
+
+.result-item p {
+    margin:0;
+}
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.reciter-card {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    width: 160px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.reciter-card:hover {
+    transform: translateY(-5px);
+}
+
+.reciter-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.reciter-card h3 {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #2c3e50;
+}
+
+.select-btn {
+    margin-top: 10px;
+    background-color: #2ecc71;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.select-btn:hover {
+    background-color:#27ae60;
+}
+.form-style {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.form-style input {
+    width: 80%;
+    max-width: 300px;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.form-style .actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.form-style .actions .cta {
+    background-color: #2ecc71;
+    text-decoration: none;
+    text-align:center;
+}
