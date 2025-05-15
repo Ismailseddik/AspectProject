@@ -3,38 +3,38 @@ html, body {
     padding: 0;
     height: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: auto;
 }
 
 body {
     background: url('/img/frame.jpg') no-repeat center center fixed;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: #2c3e50;
 }
+
 .page-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    min-height:100vh;
+    min-height: 100vh;
 }
+
 .page-frame {
-    background-color: rgba(255, 255, 255, 0.85); /* slight background to keep content readable */
+    background-color: rgba(255, 255, 255, 0.85);
     border-radius: 20px;
-    padding: 40px;
+    padding: 60px 40px 40px; /* Increased top padding */
     max-width: 700px;
     width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     text-align: center;
 }
 
-/* Keep the rest of your styles */
 .bismillah {
     font-size: 2.5rem;
     font-weight: bold;
     margin: 0;
+    padding-top: 20px; /* Ensure it's pushed down visibly */
 }
 
 .subtitle {
@@ -85,8 +85,9 @@ audio {
 footer {
     margin-top: 30px;
     font-size: 0.8rem;
-    color:#888;
+    color: #888;
 }
+
 .navbar {
     background-color: rgba(255, 255, 255, 0.95);
     display: flex;
@@ -115,7 +116,7 @@ footer {
 }
 
 .nav-links a:hover {
-    color:#2ecc71;
+    color: #2ecc71;
 }
 
 .search-box {
@@ -133,7 +134,7 @@ footer {
     font-size: 1.1rem;
     border: 1px solid #ccc;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: #fdfdfd;
 }
 
@@ -146,11 +147,11 @@ footer {
     font-size: 1.1rem;
     cursor: pointer;
     transition: background 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .search-box button:hover {
-    background-color:#27ae60;
+    background-color: #27ae60;
 }
 
 .results {
@@ -171,8 +172,9 @@ footer {
 }
 
 .result-item p {
-    margin:0;
+    margin: 0;
 }
+
 .grid {
     display: flex;
     flex-wrap: wrap;
@@ -186,7 +188,7 @@ footer {
     padding: 15px;
     border-radius: 10px;
     width: 160px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease;
 }
@@ -221,8 +223,9 @@ footer {
 }
 
 .select-btn:hover {
-    background-color:#27ae60;
+    background-color: #27ae60;
 }
+
 .form-style {
     display: flex;
     flex-direction: column;
@@ -249,30 +252,66 @@ footer {
 .form-style .actions .cta {
     background-color: #2ecc71;
     text-decoration: none;
-    text-align:center;
+    text-align: center;
 }
 
-.favorite-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 10px;
-  background-color: #f9f9f9;
+.ayah {
+    margin-bottom: 20px;
 }
 
-.favorite-card h3 {
-  margin: 0 0 8px 0;
+.arabic {
+    font-size: 1.5em;
+    text-align: right;
+    font-family: 'Scheherazade', serif;
 }
 
-.favorite-card button {
-  background-color: #d9534f;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: pointer;
+.translation {
+    font-size: 1em;
+    color: #444;
 }
 
-.favorite-card button:hover {
-  background-color: #c9302c;
+.verse-number {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.ayah-frame-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.ayah-box {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: white;
+    padding: 30px;
+    width: 45%;
+    min-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.ayah-box.arabic {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Scheherazade', serif;
+    font-size: 1.4em;
+}
+
+.ayah-box.english {
+    text-align: left;
+    font-family: 'Segoe UI', sans-serif;
+}
+.form-style select {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-width: 300px;
+    background-color: #fdfdfd;
+    margin: 10px 0;
 }

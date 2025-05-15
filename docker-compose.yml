@@ -1,4 +1,6 @@
 services:
+
+  # PostgreSQL for monolith
   postgres:
     image: postgres:latest
     container_name: Aspect_Project_Postgres
@@ -10,8 +12,11 @@ services:
       POSTGRES_DB: AspectProject
     volumes:
       - pg_data:/var/lib/postgresql/data
+    networks:
+      - baraka-network
     restart: unless-stopped
 
+  # Redis for monolith
   redis:
     image: redis:latest
     container_name: Aspect_Project_redis
@@ -20,8 +25,108 @@ services:
     volumes:
       - redis_data:/data
     command: redis-server --save 60 1 --loglevel warning
+    networks:
+      - baraka-network
     restart: unless-stopped
+
+  # MySQL for search service
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=quran_db
+      - MYSQL_USER=quran_user
+      - MYSQL_PASSWORD=quran_pass
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - baraka-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Quran Service (Search system)
+  quran-service:
+    build:
+      context: ./search-service/microservices/quran-service
+      dockerfile: Dockerfile
+    ports:
+      - "9082:8082"
+    networks:
+      - baraka-network
+
+  frontend-service:
+    build:
+      context: ./search-service/microservices/frontend-service
+      dockerfile: Dockerfile
+    ports:
+      - "9083:8083"
+    environment:
+      - QURAN_SERVICE_URL=http://quran-service:8082
+    networks:
+      - baraka-network
+    depends_on:
+      - quran-service
+
+  api-gateway:
+    build:
+      context: ./search-service/microservices/api-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "9080:8080"
+    environment:
+      - QURAN_SERVICE_URL=http://quran-service:8082
+      - FRONTEND_SERVICE_URL=http://frontend-service:8083
+    networks:
+      - baraka-network
+    depends_on:
+      - frontend-service
+      - quran-service
+
+  # Quran Streaming Service
+  quran-streaming-service:
+    build:
+      context: ./AspectProjectQuranStreaming
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8080"
+    networks:
+      - baraka-network
+
+  # Monolith (AspectProject)
+  monolith:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - baraka-network
+    depends_on:
+      - postgres
+      - redis
+      - quran-service
+      - quran-streaming-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/AspectProject
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_REDIS_HOST=redis
+      - SPRING_REDIS_PORT=6379
+      - QURAN_TEXT_SERVICE_URL=http://quran-service:8082
+      - QURAN_STREAMING_SERVICE_URL=http://quran-streaming-service:8080
+
+networks:
+  baraka-network:
+    driver: bridge
 
 volumes:
   pg_data:
   redis_data:
+  mysql-data:

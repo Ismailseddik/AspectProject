@@ -28,10 +28,38 @@
                 <p class="ayah">
                     <em>"All praise is due to Allah, Lord of the worlds..."</em>
                 </p>
-                <audio controls>
-                    <source src="/audio/alfatiha.mp3" type="audio/mpeg">
+                <h2>Featured Surah: Al-Fatiha</h2>
+                <form method="get" action="/home" class="form-style">
+                    <label for="surahId" style="margin-bottom: 10px;">Choose Surah:</label>
+                    <select name="surahId" id="surahId" class="form-style input">
+                        <option th:each="s : ${surahs}"
+                                th:value="${s.id}"
+                                th:selected="${s.id} == ${surahId}"
+                                th:text="${s.name + ' - ' + s.nameArabic}">
+                        </option>
+                    </select>
+                    <button type="submit" class="cta">Load Surah</button>
+                </form>
+                <audio controls autoplay>
+                    <source th:src="@{${audioUrl}}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
+
+                <h3>Surah Text</h3>
+                <div class="ayah-frame-wrapper">
+                    <div class="ayah-box english">
+                        <div th:each="ayah : ${ayat}">
+                            <p th:text="${ayah['text']}"></p>
+                            <p><small th:text="'Verse ' + ${ayah['verseNumber']}"></small></p>
+                        </div>
+                    </div>
+
+                    <div class="ayah-box arabic">
+                        <div th:each="ayah : ${ayat}">
+                            <p th:text="${ayah['textArabic']}"></p>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="actions">
