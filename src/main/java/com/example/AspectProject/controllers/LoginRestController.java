@@ -1,6 +1,8 @@
 package com.example.AspectProject.controllers;
 
 import com.example.AspectProject.services.LoginService;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,7 +18,9 @@ public class LoginRestController {
     }
 
     @PostMapping("/login")
-    public boolean login(@RequestParam String username, @RequestParam String password) {
-        return loginService.validateLogin(username, password);
-}
+    public boolean login(@RequestParam String username,
+                         @RequestParam String password,
+                         HttpServletResponse response) {
+        return loginService.validateLogin(username, password, response);
+    }
 }

@@ -14,7 +14,7 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
     fetch('/api/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&email=${encodeURIComponent(email)}
+        body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&email=${encodeURIComponent(email)}`
     })
     .then(response => response.json())
     .then(success => {

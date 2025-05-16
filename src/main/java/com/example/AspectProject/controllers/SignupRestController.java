@@ -16,7 +16,9 @@ public class SignupRestController {
     }
 
     @PostMapping("/signup")
-    public boolean signup(@RequestParam String username, @RequestParam String password, @RequestParam String email) {
-        return signupService.registerUser(username, password,email);
-}
+    public boolean signup(@RequestParam String username,
+                          @RequestParam String password,
+                          @RequestParam String email) {
+        return signupService.registerUser(username, password, email);
+    }
 }

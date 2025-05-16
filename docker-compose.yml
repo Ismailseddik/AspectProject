@@ -1,6 +1,6 @@
 services:
 
-  # PostgreSQL for monolith
+  # Main PostgreSQL for monolith
   postgres:
     image: postgres:latest
     container_name: Aspect_Project_Postgres
@@ -29,7 +29,7 @@ services:
       - baraka-network
     restart: unless-stopped
 
-  # MySQL for search service
+  # MySQL for Quran service
   mysql:
     image: mysql:8.0
     container_name: mysql
@@ -51,7 +51,7 @@ services:
       timeout: 5s
       retries: 5
 
-  # Quran Service (Search system)
+  # Quran Text Search Service
   quran-service:
     build:
       context: ./search-service/microservices/quran-service
@@ -61,6 +61,7 @@ services:
     networks:
       - baraka-network
 
+  # Frontend
   frontend-service:
     build:
       context: ./search-service/microservices/frontend-service
@@ -74,6 +75,7 @@ services:
     depends_on:
       - quran-service
 
+  # API Gateway
   api-gateway:
     build:
       context: ./search-service/microservices/api-gateway
@@ -83,11 +85,13 @@ services:
     environment:
       - QURAN_SERVICE_URL=http://quran-service:8082
       - FRONTEND_SERVICE_URL=http://frontend-service:8083
+      - USER_SERVICE_URL=http://user-service:9090
     networks:
       - baraka-network
     depends_on:
       - frontend-service
       - quran-service
+      - user-service
 
   # Quran Streaming Service
   quran-streaming-service:
@@ -99,7 +103,7 @@ services:
     networks:
       - baraka-network
 
-  # Monolith (AspectProject)
+  # Monolith
   monolith:
     build:
       context: .
@@ -121,6 +125,39 @@ services:
       - SPRING_REDIS_PORT=6379
       - QURAN_TEXT_SERVICE_URL=http://quran-service:8082
       - QURAN_STREAMING_SERVICE_URL=http://quran-streaming-service:8080
+      - USER_SERVICE_URL=http://user-service:9090
+
+  # User service database (Postgres)
+  user-db:
+    image: postgres:latest
+    container_name: user_db
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: users
+    volumes:
+      - user_pgdata:/var/lib/postgresql/data
+    networks:
+      - baraka-network
+    restart: unless-stopped
+
+  # User service (Login + Signup)
+  user-service:
+    build:
+      context: ./jwtsecurity
+      dockerfile: Dockerfile
+    ports:
+      - "8084:9090"
+    depends_on:
+      - user-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://user-db:5432/users
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    networks:
+      - baraka-network
 
 networks:
   baraka-network:
@@ -130,3 +167,4 @@ volumes:
   pg_data:
   redis_data:
   mysql-data:
+  user_pgdata:

@@ -31,4 +31,8 @@ public class QuranTextClient {
         String url = "http://quran-service:8082/api/surahs";
         return restTemplate.getForObject(url, List.class);
     }
+    public Map<String, Object> getSurahById(int surahId) {
+        String url = "http://quran-service:8082/api/surahs/" + surahId;
+        return restTemplate.getForObject(url, Map.class);
+    }
 }

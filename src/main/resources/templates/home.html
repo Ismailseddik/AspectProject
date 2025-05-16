@@ -28,7 +28,7 @@
                 <p class="ayah">
                     <em>"All praise is due to Allah, Lord of the worlds..."</em>
                 </p>
-                <h2>Featured Surah: Al-Fatiha</h2>
+                <h2>Surah options</h2>
                 <form method="get" action="/home" class="form-style">
                     <label for="surahId" style="margin-bottom: 10px;">Choose Surah:</label>
                     <select name="surahId" id="surahId" class="form-style input">
@@ -38,13 +38,39 @@
                                 th:text="${s.name + ' - ' + s.nameArabic}">
                         </option>
                     </select>
-                    <button type="submit" class="cta">Load Surah</button>
+                    <div style="display: flex; gap: 10px; margin-top: 10px;">
+                        <button type="submit" class="cta">Load Surah</button>
+                        <a th:href="@{${downloadUrl}}" class="cta" download>
+                            ⬇ Download Surah
+                        </a>
+                    </div>
                 </form>
                 <audio controls autoplay>
                     <source th:src="@{${audioUrl}}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
+                <div class="dropdown-row">
+                    <div class="dropdown-item">
+                        <label for="reciterSelect">Reciter:</label>
+                        <select name="reciter" id="reciterSelect" class="speed-dropdown">
+                            <option th:each="r : ${reciters}"
+                                    th:value="${r}"
+                                    th:selected="${r} == ${reciter}"
+                                    th:text="${r}">
+                            </option>
+                        </select>
+                    </div>
 
+                    <div class="dropdown-item">
+                        <label for="speed">Playback Speed:</label>
+                        <select id="speed" class="speed-dropdown">
+                            <option value="0.5">0.5x (Slow)</option>
+                            <option value="1" selected>1x (Normal)</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="2">2x (Fast)</option>
+                        </select>
+                    </div>
+                </div>
                 <h3>Surah Text</h3>
                 <div class="ayah-frame-wrapper">
                     <div class="ayah-box english">
