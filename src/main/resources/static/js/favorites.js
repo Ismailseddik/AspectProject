@@ -87,7 +87,7 @@ function loadFavorites() {
         div.className = 'result-item';
         div.innerHTML = `
           <div class="favorite-card">
-            <h3>${fav.surahName} <span class="arabic-text">${fav.surahNameArabic}</span> - Ayah ${fav.ayahNumber}</h3>
+            <h3>${fav.surahName} <span class="arabic-text">${fav.surahNameArabic != null ? fav.surahNameArabic : ''}</span> - Ayah ${fav.ayahNumber}</h3>
             <p class="arabic-text">${fav.ayahTextArabic}</p>
             <p>${fav.ayahText}</p>
             <button class="cta" onclick="deleteFavorite(${fav.id})">Remove</button>

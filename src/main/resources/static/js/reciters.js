@@ -11,13 +11,8 @@ window.onload = function() {
                 reciterCard.innerHTML = `
                     <img src="${reciter.imageUrl}" alt="${reciter.name}">
                     <h3>${reciter.name}</h3>
-                    <button class="select-btn" onclick="selectReciter(&quot;${reciter.name}&quot;)">Select</button>
                 `;
                 grid.appendChild(reciterCard);
             });
         });
-}
-
-function selectReciter(name) {
-    alert("You selected:"+name);
 }
